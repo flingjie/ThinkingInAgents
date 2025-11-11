@@ -6,15 +6,32 @@
     <description>Recent content on Thinking in Agents</description>
     <generator>Hugo -- 0.151.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 11 Nov 2025 14:24:50 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 11 Nov 2025 17:38:20 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>My View on Agents</title>
+      <title>Agent development — Think in patterns, not frameworks</title>
+      <link>http://localhost:1313/posts/agent_development/</link>
+      <pubDate>Tue, 11 Nov 2025 17:38:20 +0800</pubDate>
+      <guid>http://localhost:1313/posts/agent_development/</guid>
+      <description>&lt;h2 id=&#34;1-why-off-the-shelf-frameworks-are-starting-to-fail&#34;&gt;1. Why “off-the-shelf frameworks” are starting to fail&lt;/h2&gt;
+&lt;p&gt;A framework is a tool for imposing order. It helps you set boundaries amid messy requirements, makes collaboration predictable, and lets you reproduce results.&lt;/p&gt;
+&lt;p&gt;Whether it’s a business framework (OKR) or a technical framework (React, LangChain), its value is that it makes experience portable and complexity manageable.&lt;/p&gt;
+&lt;p&gt;But frameworks assume a stable problem space and well-defined goals. The moment your system operates in a high-velocity, high-uncertainty environment, that advantage falls apart:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Building a Customer Support Agent: From Linear Flows to Expert Routing</title>
+      <link>http://localhost:1313/posts/building_a_customer_support_agent/</link>
+      <pubDate>Tue, 11 Nov 2025 17:03:14 +0800</pubDate>
+      <guid>http://localhost:1313/posts/building_a_customer_support_agent/</guid>
+      <description>&lt;p&gt;Traditional customer service bots rely heavily on &lt;em&gt;if/else&lt;/em&gt; rules and rigid intent-matching. The moment a user says something vague or deviates from the expected flow, the system breaks down. This is what we call &lt;strong&gt;“process thinking.”&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;In the Agent era, we shift toward &lt;strong&gt;“strategic thinking”&lt;/strong&gt; — building intelligent systems that can make decisions autonomously and dynamically route conversations to the right experts. Such a system isn’t just an LLM; it’s an &lt;strong&gt;LLM-powered network of specialized experts.&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>My View on Agents: From Workflows to Strategic Thinking</title>
       <link>http://localhost:1313/posts/my-view-on-agents/</link>
       <pubDate>Tue, 11 Nov 2025 14:24:50 +0800</pubDate>
       <guid>http://localhost:1313/posts/my-view-on-agents/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;My View on Agents: From Workflows to Strategic Thinking&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;OpenAI defines an &lt;em&gt;Agent&lt;/em&gt; as a system that integrates model capabilities, tool interfaces, and strategies — capable of autonomously perceiving, deciding, acting, and improving its performance.&lt;/p&gt;
+      <description>&lt;p&gt;OpenAI defines an &lt;em&gt;Agent&lt;/em&gt; as a system that integrates model capabilities, tool interfaces, and strategies — capable of autonomously perceiving, deciding, acting, and improving its performance.&lt;/p&gt;
 &lt;p&gt;Claude, on the other hand, highlights the goal-driven and interactive nature of Agents: they not only understand and generate information, but also refine their behavior through continuous feedback.&lt;/p&gt;
 &lt;p&gt;In my view, if an LLM is the &lt;strong&gt;brain&lt;/strong&gt;, then an Agent is the &lt;strong&gt;body that acts on behalf of that brain&lt;/strong&gt;.
 An LLM is like a &lt;em&gt;super-intelligent search engine and content generator&lt;/em&gt; — it can understand problems and produce answers, but it doesn’t act on its own.

@@ -1,10 +1,8 @@
 +++
 date = '2025-11-11T14:24:50+08:00'
 draft = true
-title = 'My View on Agents'
+title = 'My View on Agents: From Workflows to Strategic Thinking'
 +++
-
-**My View on Agents: From Workflows to Strategic Thinking**
 
 OpenAI defines an _Agent_ as a system that integrates model capabilities, tool interfaces, and strategies — capable of autonomously perceiving, deciding, acting, and improving its performance.
 
