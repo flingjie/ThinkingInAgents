@@ -174,3 +174,8 @@ print("\n最新回复:", response)
 - 实践中需注意上下文膨胀、隔离及可扩展性
 
 未来，随着 LLM 和多 Agent 系统的发展，上下文工程将成为智能体系统设计的核心能力。通过合理设计和优化上下文策略，智能体能够更精准、更连贯地理解和执行任务，从而实现更高水平的智能交互。
+
+## 参考资料
+
+- [AI 代理的上下文工程：构建 Manus 的经验教训](https://manus.im/zh-cn/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus)
+- [Context Engineering 2.0](https://github.com/GAIR-NLP/Context-Engineering-2.0)

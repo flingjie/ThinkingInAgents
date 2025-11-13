@@ -6,8 +6,15 @@
     <description>Recent content in Posts on Thinking in Agents</description>
     <generator>Hugo -- 0.151.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 12 Nov 2025 16:21:12 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 13 Nov 2025 15:12:29 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>上下文工程之DeepAgents</title>
+      <link>http://localhost:1313/posts/context_engineering_in_deepagents/</link>
+      <pubDate>Thu, 13 Nov 2025 15:12:29 +0800</pubDate>
+      <guid>http://localhost:1313/posts/context_engineering_in_deepagents/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Agent开发之上下文工程</title>
       <link>http://localhost:1313/posts/context_engineering/</link>
@@ -52,7 +59,8 @@ Transformer 的 attention 决定模型在输入序列内部该关注哪些 token
 &lt;li&gt;&lt;strong&gt;时代 3.0（未来）&lt;/strong&gt;：类人智能阶段，智能体开始理解和推理更复杂的上下文关系。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;时代 4.0（未来设想）&lt;/strong&gt;：超人智能阶段，智能体能够处理极高复杂度和不确定性的上下文，实现超人级决策和理解能力。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;GAIR-NLP 指出，当前主流大语言模型（如 GPT-3 及其后续版本）具备以下 2.0 特征：&lt;/p&gt;</description>
+&lt;p&gt;&lt;img alt=&#34;this is a image&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/images/context_overview.png&#34;&gt;
+GAIR-NLP 指出，当前主流大语言模型（如 GPT-3 及其后续版本）具备以下 2.0 特征：&lt;/p&gt;</description>
     </item>
     <item>
       <title>Agent development — Think in patterns, not frameworks</title>
