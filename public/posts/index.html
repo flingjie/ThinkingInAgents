@@ -114,6 +114,38 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Agent开发之上下文工程
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>随着 AI 系统和多 Agent 架构的发展，“上下文工程”这一概念逐渐成为设计智能体系统的核心话题。
+Manus 团队在其博客文章《AI 代理的上下文工程：构建 Manus 的经验教训》中提到，在打造智能体系统的过程中，他们面临一个根本抉择：是从头训练一个端到端的智能代理模型，还是基于已有的大语言模型（LLM）构建 “上下文学习”能力？ 正是对“上下文”这一维度的深入反思，让他们最终押注于“上下文工程”（Context Engineering）。
+在当下，智能体系统越来越被要求实现多轮交互、状态追踪、环境变化的感知与响应。缺乏对上下文的系统化管理，就意味着智能体容易“丢链子”：记不住上一轮、误判当前状态、无法在复杂任务中持续推进。Manus 的经验清楚地告诉我们：模型能力虽强，若缺乏结构化的上下文策略，其潜力也会大打折扣。
+因此，本文将围绕 “上下文工程” 这一核心展开：从其定义到发展历程，再到一个实践示例，最终回顾关键要点并探讨未来趋势。希望你在搭建智能体系统时，能少走几步、快步收敛。
+什么是上下文工程（Context Engineering） 提示词工程告诉模型“怎么问、怎么答”，而上下文工程则让模型 记住并利用过去的信息 ；前者关注单次输入，后者关注多轮连续性，两者互为补充。
+可以把它想象成和朋友聊天的场景：你们聊了半个小时，你的朋友记得你之前说过的话，知道你今天的计划，也了解你的喜好。当你问“今晚吃什么”时，他就能结合之前的聊天内容，给出更贴心、更合理的建议。
+上下文工程让智能体也能像这个朋友一样——不仅“听懂”当前输入，还能“记住”历史信息并合理利用：
+会记住历史信息（你说过什么、做过什么） 会结合当前任务进行判断 可以管理不同任务或不同用户的上下文，避免混乱 简而言之，上下文工程就是让智能体有记忆、有判断力，不仅看现在，更懂过去和环境。
+从注意力机制到上下文工程 要理解上下文工程的本质，可以从大语言模型的核心架构——Transformer 说起。 Transformer 的关键思想来自那篇里程碑式论文《Attention Is All You Need》。 自注意力机制（Self-Attention）让模型在处理每个词时，都能动态地“关注”输入序列中与之最相关的部分。模型不再是线性阅读，而是在整个上下文中分配“注意力”，由此形成理解。
+从这个角度看，上下文工程其实是系统层面的注意力管理机制。 Transformer 的 attention 决定模型在输入序列内部该关注哪些 token； 而上下文工程决定模型在更高层次上该关注哪些历史、任务、环境或工具。
+换句话说：
+Transformer 的注意力是“微观”的，聚焦在词与词之间； 上下文工程的注意力是“宏观”的，聚焦在对话、记忆、任务和工具之间。 在复杂的智能体系统中，这种“外部注意力”尤为关键。 它帮助系统判断：什么时候该引用历史，什么时候该忽略噪声，什么时候聚焦当下。 如果说 Transformer 是微观的注意力调度器，那么上下文工程就是宏观的注意力编排师。
+发展历程 GAIR-NLP 将上下文工程定位为一个涉及上下文收集、存储、管理和利用的工程过程，目标是缩小人类意图与机器理解之间的差距，并提出了上下文工程的四个发展阶段。
+四阶段演进模型 时代 1.0：原始计算阶段，只能处理结构化输入，对上下文处理能力有限。人机交互成本较高，因为机器只能接受非常明确的上下文信息。 时代 2.0：以智能体为中心，出现自然语言处理、大语言模型、多模态处理和模糊信息处理能力。机器智能提升，人机交互成本下降，可以容忍更高熵（更杂乱、非结构化）的上下文信息。 时代 3.0（未来）：类人智能阶段，智能体开始理解和推理更复杂的上下文关系。 时代 4.0（未来设想）：超人智能阶段，智能体能够处理极高复杂度和不确定性的上下文，实现超人级决策和理解能力。 GAIR-NLP 指出，当前主流大语言模型（如 GPT-3 及其后续版本）具备以下 2.0 特征：
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-11-12 16:21:12 +0800 CST'>November 12, 2025</span></footer>
+  <a class="entry-link" aria-label="post link to Agent开发之上下文工程" href="http://localhost:1313/posts/context_engineering/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Agent development — Think in patterns, not frameworks
       <span class="entry-hint" title="Draft">
         <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
@@ -124,7 +156,7 @@
     </h2>
   </header>
   <div class="entry-content">
-    <p>Agent development — Think in patterns, not frameworks 1. Why “off-the-shelf frameworks” are starting to fail A framework is a tool for imposing order. It helps you set boundaries amid messy requirements, makes collaboration predictable, and lets you reproduce results.
+    <p>1. Why “off-the-shelf frameworks” are starting to fail A framework is a tool for imposing order. It helps you set boundaries amid messy requirements, makes collaboration predictable, and lets you reproduce results.
 Whether it’s a business framework (OKR) or a technical framework (React, LangChain), its value is that it makes experience portable and complexity manageable.
 But frameworks assume a stable problem space and well-defined goals. The moment your system operates in a high-velocity, high-uncertainty environment, that advantage falls apart:
 ...</p>

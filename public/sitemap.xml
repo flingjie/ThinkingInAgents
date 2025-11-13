@@ -2,13 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/posts/agent_development/</loc>
-    <lastmod>2025-11-11T17:38:20+08:00</lastmod>
+    <loc>http://localhost:1313/posts/context_engineering/</loc>
+    <lastmod>2025-11-12T16:21:12+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/</loc>
-    <lastmod>2025-11-11T17:38:20+08:00</lastmod>
+    <lastmod>2025-11-12T16:21:12+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/</loc>
+    <lastmod>2025-11-12T16:21:12+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/agent_development/</loc>
     <lastmod>2025-11-11T17:38:20+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/building_a_customer_support_agent/</loc>
