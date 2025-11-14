@@ -1,7 +1,7 @@
 +++
 date = '2025-11-12T16:21:12+08:00'
 draft = true
-title = 'Agent开发之上下文工程'
+title = 'Agent开发之上下文工程:让智能体“持续地思考”'
 +++
 
 随着 AI 系统和多 Agent 架构的发展，“上下文工程”这一概念逐渐成为设计智能体系统的核心话题。
@@ -179,3 +179,4 @@ print("\n最新回复:", response)
 
 - [AI 代理的上下文工程：构建 Manus 的经验教训](https://manus.im/zh-cn/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus)
 - [Context Engineering 2.0](https://github.com/GAIR-NLP/Context-Engineering-2.0)
+- [Deepagents](https://github.com/langchain-ai/deepagents)
