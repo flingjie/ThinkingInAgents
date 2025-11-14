@@ -6,8 +6,16 @@
     <description>Recent content in Posts on Thinking in Agents</description>
     <generator>Hugo -- 0.151.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 12 Nov 2025 16:21:12 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 15 Nov 2025 01:42:11 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Context_prompt_driven_self_learning</title>
+      <link>http://localhost:1313/posts/context_prompt_driven_self_learning/</link>
+      <pubDate>Sat, 15 Nov 2025 01:42:11 +0800</pubDate>
+      <guid>http://localhost:1313/posts/context_prompt_driven_self_learning/</guid>
+      <description>&lt;p&gt;In the world of artificial intelligence, we&amp;rsquo;re moving beyond simply feeding agents with information and telling them what to do. &lt;strong&gt;Agents shouldn’t just run on context — they should learn from it&lt;/strong&gt;. The context window isn’t just a temporary storage for prompts; it&amp;rsquo;s a dynamic medium for &lt;strong&gt;meta-learning&lt;/strong&gt;. It’s not just a scaffold, but the &lt;strong&gt;substrate&lt;/strong&gt; on which the agent&amp;rsquo;s intelligence thrives.&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s rethink what the context in a prompt actually means. Imagine the prompt as more than just a one-off instruction. Instead, it’s a &lt;em&gt;portable cognitive environment&lt;/em&gt; where the agent constantly remembers, reasons, reflects, and refines itself — continuously improving its performance. This is the core idea behind &lt;strong&gt;context-prompt-driven self-learning&lt;/strong&gt;.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Agent开发之上下文工程:让智能体“持续地思考”</title>
       <link>http://localhost:1313/posts/context_engineering/</link>
