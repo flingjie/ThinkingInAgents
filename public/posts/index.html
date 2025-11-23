@@ -114,7 +114,37 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Context_prompt_driven_self_learning
+    <h2 class="entry-hint-parent">AI 的未来，不在大脑，而在手：从 LLM 到工具驱动智能
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>在 AI 领域，我们常陷入一个误区：认为智能的未来在于构建更大、更全知、更像人脑的模型，让它记住所有知识。然而，作为开发者，我们深知这种“记忆力”的上限和局限。人类的真正智能，并非依赖于单纯的知识存储，而在于解决问题的能力。
+思考我们自己解决一个复杂数学题的流程：
+分析问题：理解需求。 选择工具：判断需要哪些数学工具、公式或软件。 建模与执行：运用工具进行计算、推导。 验证与决策：检查结果，修正思路，得出最终结论。 在这个过程中，最核心的不是你“背诵”了多少公式，而是你知道何时何地调用何种工具，并能高效利用它们。这是一种以“结构化思维 &#43; 目标导向”为核心的模式。
+LLM 的本质与局限：语言的概率压缩器 从开发者角度看，当前的大型语言模型（LLM）本质是一个强大的语言概率压缩器。它在海量文本数据中学习词语间的统计关联，从而能生成极为流利、上下文相关的文本。对于纯语言任务，其表现令人惊叹。
+然而，当我们尝试让 LLM 驾驭非语言、强逻辑、精确性的领域时，如：
+抽象符号运算（数学、物理） 精确定义匹配（工程规范） 严格逻辑推导（编程、决策树） 可验证的计算过程（财务、科学实验） 我们会发现语言模型固有的“概率化”机制，与这些领域要求的“确定性”之间存在着先天鸿沟。指望 LLM 仅仅靠扩大规模来跨越这条鸿沟，就像期望一个语言学家通过背诵更多诗歌就能成为量子物理学家一样，这是不现实且低效的。
+一、扩展 LLM 能力：借用人类“使用工具”的智慧 人类的进步正是通过外部工具不断突破自身生理和认知极限：计算器扩展了计算力，笔记扩展了记忆，显微镜扩展了感知，电脑扩展了逻辑运算能力。我们的大脑并非用于无限计算，而是用于调度工具、规划步骤、制定策略和验证结果。
+因此，作为开发者，我们不应止步于“训练更大模型”，而应专注于赋予 LLM “使用工具”的能力。当前 AI 领域已清晰地展现了这一趋势和技术价值：
+解决 LLM 算术硬伤：集成计算器工具
+问题：即使是参数巨大的 LLM，在两位数以上的精确计算上依然错误频发，因为其内部知识是概率模式，而非符号计算引擎。 解决方案：通过将外部计算器作为工具接入。LLM 识别出计算任务后，不再尝试内部计算，而是将数字和运算符传递给计算器工具执行，再将准确结果整合到回复中。 价值：外部计算器提供了 LLM 内部无法比拟的精确执行能力，极大地提升了模型在数值任务上的可靠性。 克服 LLM 信息“幻觉”：引入搜索引擎与知识库工具
+问题：LLM 训练数据的时效性、全面性限制，以及生成文本时为了流畅性可能出现的“编造”现象，导致其信息准确性难以保证。 解决方案：引入搜索引擎或外部知识库查询工具。LLM 在生成答案前，先调用这些工具检索最新、最准确的事实依据。例如，回答“最新诺贝尔奖得主”时，模型通过工具获取实时数据。 价值：外部工具弥补了 LLM 内部知识的盲区与时效性问题，提供了“事实校准”和“实时更新”的能力。 突破 LLM 逻辑推理瓶颈：集成代码解释器与符号系统
+问题：LLM 在处理多步复杂逻辑推理、编程调试或科学问题时，往往难以保持推理链条的连贯和正确。 解决方案： 代码解释器（Code Interpreter）：LLM 生成 Python 等代码，然后将代码交给外部解释器运行验证。模型可根据运行结果（包括错误信息）进行调试和迭代。 符号推理系统：对于严谨的数学或逻辑问题，LLM 将问题转化为符号表达式，交由专门的工具处理。 价值：这些工具为 LLM 提供了其内部缺乏的精确执行和验证逻辑的能力，是其逻辑推理的强大“外挂”。 这些实践案例清晰地表明，在 AI 发展的关键阶段，尤其是面对需要超越语言模式、进行精确操作、获取实时信息和严格逻辑验证的场景时，仅仅依赖模型内部的“知识”是远远不够的。
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-11-20 13:59:13 +0800 CST'>November 20, 2025</span></footer>
+  <a class="entry-link" aria-label="post link to AI 的未来，不在大脑，而在手：从 LLM 到工具驱动智能" href="http://localhost:1313/posts/teaching_llm_to_use_tools/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Context Prompt-Driven Self-Learning: The Future of Agent Cognition
       <span class="entry-hint" title="Draft">
         <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
           <path
@@ -129,7 +159,7 @@ Let’s rethink what the context in a prompt actually means. Imagine the prompt 
 ...</p>
   </div>
   <footer class="entry-footer"><span title='2025-11-15 01:42:11 +0800 CST'>November 15, 2025</span></footer>
-  <a class="entry-link" aria-label="post link to Context_prompt_driven_self_learning" href="http://localhost:1313/posts/context_prompt_driven_self_learning/"></a>
+  <a class="entry-link" aria-label="post link to Context Prompt-Driven Self-Learning: The Future of Agent Cognition" href="http://localhost:1313/posts/context_prompt_driven_self_learning/"></a>
 </article>
 
 <article class="post-entry"> 
