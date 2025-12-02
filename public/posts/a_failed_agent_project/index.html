@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>一次Agent项目失利手记 | Thinking in Agents</title>
+<meta name="keywords" content="">
+<meta name="description" content="今年上半年，我接手了一个让我心潮澎湃的项目：为一家业务飞速扩张的公司构建一套内部智能 Agent 系统。我们的愿景很宏大——希望 Agent 能自主处理部分工单、高效汇总业务信息，甚至智能触发内部流程。那时候，AI 圈子正热得发烫，人人都在谈 Agent，我也觉得自己站在了风口浪尖。
+然而，现实却狠狠地泼了一盆冷水。项目非但没有跑出预期的曲线，反而像一连串的“技术地雷”，接二连三地爆炸。
+直到项目被紧急叫停的那一刻，我才恍然大悟：许多看似纯粹的技术难题，实则根植于我们对工程化理念的忽视。
+这篇文字，是我对那段经历的一次痛彻心扉的回顾。
+一、项目开局：一切顺利得让人不安
+说实话，项目的启动阶段顺利得有些过分。
+我们迅速选用了当时最新的大模型，搭建了一个简洁的对话界面，并初步绑定了几项核心业务工具。仅仅两周时间，一个像模像样的 Demo 就成功跑通了几个典型的工单处理流程。
+领导和客户看了 Demo，赞不绝口。那一刻，我心头升起一股傲气，觉得凭我们团队的能力，这次 Agent 落地定能一帆风顺。
+然而，正是这种盲目的乐观，为后来的急转直下埋下了伏笔。当我们将系统接入真实的业务数据环境时，好戏才真正开场。
+二、第一次“撞墙”：Agent 在信息洪流中迷失了方向
+灰度上线的第一天，系统刚运行没几个小时，我们后台的监控告警就开始疯狂闪烁。
+原因听起来有些啼笑皆非：Agent 本应根据用户输入的关键词，准确判断工单是售后问题还是物流咨询。但在某些特定场景下，它会错误地将工单识别为“未知类型”，随即陷入一个“怪圈”——反复调用同一个查询工具，频率之高，一度让我们以为系统正遭受 DDoS 攻击。
+那天晚上，我盯着日志，看到怀疑人生：
+
+调用：工单查询 → 发现没结果 → 尝试改写问题 → 再次工单查询 → 仍然没结果 → 又一次改写&hellip;
+它就像一个被困在房间里的机器人，固执地、一遍又一遍地敲击着同一扇根本打不开的门。我们后来形象地称之为“围墙式死循环”。
+三、愈演愈烈：Agent 开始“胡乱发号施令”
+进入第二周，一个更为棘手的事故发生了。
+在某些复杂的边缘场景下，Agent 再次做出了错误的选择，这次它误选了一个用于触发“审批提醒”的工具，导致两个毫不相关的部门突然收到了莫名其妙的审批通知。
+谢天谢地，这只是一个低风险的提醒流程，没有造成真正的生产事故，但却在公司内部引起了不小的混乱。客户那边来电话质询时，我脑子里的第一反应不是恐慌，而是茫然：“怎么又是 Agent？我们不是刚修好了那个死循环吗？”
+深入排查后，我们才摸清了症结：
+
+工具命名风格混乱： 缺乏统一的规范。
+返回数据结构不一致： 各个工具的输出五花八门。
+调用约定模糊： 不同的工具调用方式差异大。
+
+当工具数量从最初的 8 个迅速膨胀到 20 多个时，Agent 的内部决策逻辑彻底陷入了混乱。那一刻我才醍醐灌顶：我们根本没有建立起一套健全的“工具治理体系”！
+回想起来，将几十个未经规范和约束的工具一股脑地扔给一个 AI 智能体自由调用，这和放任一个不了解业务的实习生随意操作上百个内部 API 几乎没有区别——甚至可能更加危险。
+四、团队的疲惫：信心开始动摇
+有一段时间，我们团队几乎每天都在为新的边缘案例焦头烂额，而且越到后期，修补的难度越大。
+前端同事抱怨 Agent 的行为模式难以预测，导致界面交互频繁出错。后端同事则深陷于错综复杂的调用日志，感觉像在迷宫里探索。而最直接的业务方，客户，也反馈体验越来越“怪异”。">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/posts/a_failed_agent_project/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.343cc480b9ffc8f04ccbe5e968ad674880cab773ec19905e93033065c1e7a804.css" integrity="sha256-NDzEgLn/yPBMy&#43;XpaK1nSIDKt3PsGZBekwMwZcHnqAQ=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/a_failed_agent_project/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Thinking in Agents (Alt + H)">Thinking in Agents</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      一次Agent项目失利手记
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="35" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h1>
+    <div class="post-meta"><span title='2025-12-02 09:46:48 +0800 CST'>December 2, 2025</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>今年上半年，我接手了一个让我心潮澎湃的项目：为一家业务飞速扩张的公司构建一套内部智能 Agent 系统。我们的愿景很宏大——希望 Agent 能自主处理部分工单、高效汇总业务信息，甚至智能触发内部流程。那时候，AI 圈子正热得发烫，人人都在谈 Agent，我也觉得自己站在了风口浪尖。</p>
+<p>然而，现实却狠狠地泼了一盆冷水。项目非但没有跑出预期的曲线，反而像一连串的“技术地雷”，接二连三地爆炸。</p>
+<p>直到项目被紧急叫停的那一刻，我才恍然大悟：许多看似纯粹的技术难题，实则根植于我们对工程化理念的忽视。</p>
+<p>这篇文字，是我对那段经历的一次痛彻心扉的回顾。</p>
+<h3 id="一项目开局一切顺利得让人不安"><strong>一、项目开局：一切顺利得让人不安</strong><a hidden class="anchor" aria-hidden="true" href="#一项目开局一切顺利得让人不安">#</a></h3>
+<p>说实话，项目的启动阶段顺利得有些过分。</p>
+<p>我们迅速选用了当时最新的大模型，搭建了一个简洁的对话界面，并初步绑定了几项核心业务工具。仅仅两周时间，一个像模像样的 Demo 就成功跑通了几个典型的工单处理流程。</p>
+<p>领导和客户看了 Demo，赞不绝口。那一刻，我心头升起一股傲气，觉得凭我们团队的能力，这次 Agent 落地定能一帆风顺。</p>
+<p>然而，正是这种盲目的乐观，为后来的急转直下埋下了伏笔。当我们将系统接入真实的业务数据环境时，好戏才真正开场。</p>
+<h3 id="二第一次撞墙agent-在信息洪流中迷失了方向"><strong>二、第一次“撞墙”：Agent 在信息洪流中迷失了方向</strong><a hidden class="anchor" aria-hidden="true" href="#二第一次撞墙agent-在信息洪流中迷失了方向">#</a></h3>
+<p>灰度上线的第一天，系统刚运行没几个小时，我们后台的监控告警就开始疯狂闪烁。</p>
+<p>原因听起来有些啼笑皆非：Agent 本应根据用户输入的关键词，准确判断工单是售后问题还是物流咨询。但在某些特定场景下，它会错误地将工单识别为“未知类型”，随即陷入一个“怪圈”——反复调用同一个查询工具，频率之高，一度让我们以为系统正遭受 DDoS 攻击。</p>
+<p>那天晚上，我盯着日志，看到怀疑人生：</p>
+<blockquote>
+<p>调用：工单查询 → 发现没结果 → 尝试改写问题 → 再次工单查询 → 仍然没结果 → 又一次改写&hellip;</p></blockquote>
+<p>它就像一个被困在房间里的机器人，固执地、一遍又一遍地敲击着同一扇根本打不开的门。我们后来形象地称之为“围墙式死循环”。</p>
+<h3 id="三愈演愈烈agent-开始胡乱发号施令"><strong>三、愈演愈烈：Agent 开始“胡乱发号施令”</strong><a hidden class="anchor" aria-hidden="true" href="#三愈演愈烈agent-开始胡乱发号施令">#</a></h3>
+<p>进入第二周，一个更为棘手的事故发生了。</p>
+<p>在某些复杂的边缘场景下，Agent 再次做出了错误的选择，这次它误选了一个用于触发“审批提醒”的工具，导致两个毫不相关的部门突然收到了莫名其妙的审批通知。</p>
+<p>谢天谢地，这只是一个低风险的提醒流程，没有造成真正的生产事故，但却在公司内部引起了不小的混乱。客户那边来电话质询时，我脑子里的第一反应不是恐慌，而是茫然：“怎么又是 Agent？我们不是刚修好了那个死循环吗？”</p>
+<p>深入排查后，我们才摸清了症结：</p>
+<ul>
+<li><strong>工具命名风格混乱：</strong> 缺乏统一的规范。</li>
+<li><strong>返回数据结构不一致：</strong> 各个工具的输出五花八门。</li>
+<li><strong>调用约定模糊：</strong> 不同的工具调用方式差异大。</li>
+</ul>
+<p>当工具数量从最初的 8 个迅速膨胀到 20 多个时，Agent 的内部决策逻辑彻底陷入了混乱。那一刻我才醍醐灌顶：<strong>我们根本没有建立起一套健全的“工具治理体系”！</strong></p>
+<p>回想起来，将几十个未经规范和约束的工具一股脑地扔给一个 AI 智能体自由调用，这和放任一个不了解业务的实习生随意操作上百个内部 API 几乎没有区别——甚至可能更加危险。</p>
+<h3 id="四团队的疲惫信心开始动摇"><strong>四、团队的疲惫：信心开始动摇</strong><a hidden class="anchor" aria-hidden="true" href="#四团队的疲惫信心开始动摇">#</a></h3>
+<p>有一段时间，我们团队几乎每天都在为新的边缘案例焦头烂额，而且越到后期，修补的难度越大。</p>
+<p>前端同事抱怨 Agent 的行为模式难以预测，导致界面交互频繁出错。后端同事则深陷于错综复杂的调用日志，感觉像在迷宫里探索。而最直接的业务方，客户，也反馈体验越来越“怪异”。</p>
+<p>在项目组的会议上，我们常常听到一句令人扎心，却又无法反驳的话：</p>
+<blockquote>
+<p>“你们能不能把它弄得稳定一点？”</p></blockquote>
+<p>这句话像一根针，直插我们内心最脆弱的地方。</p>
+<h3 id="五项目暂停压垮我们的不是技术瓶颈而是系统性缺失"><strong>五、项目暂停：压垮我们的不是技术瓶颈，而是系统性缺失</strong><a hidden class="anchor" aria-hidden="true" href="#五项目暂停压垮我们的不是技术瓶颈而是系统性缺失">#</a></h3>
+<p>项目正式被叫停那天，我与项目负责人进行了一次深谈。他皱着眉问我：“核心问题到底出在哪？你们不是说大模型本身没问题吗？”</p>
+<p>我反复思索，给出的答案是：</p>
+<ul>
+<li>并非模型能力不足。</li>
+<li>并非代码质量不高。</li>
+<li>并非工具库不够丰富。</li>
+</ul>
+<p>我们最大的症结，在于<strong>项目前期对工程化考量的严重不足</strong>：</p>
+<ul>
+<li>缺乏一套明确的工具规范。</li>
+<li>没有划定清晰的能力边界。</li>
+<li>未曾建立稳健的稳定性策略。</li>
+<li>遗漏了严谨的验证路径。</li>
+<li>缺失了有效的风险回退机制。</li>
+</ul>
+<p>简单来说：<strong>我们对 AI 能力的信任，超越了对工程严谨性的重视。</strong></p>
+<h3 id="六涅槃重生两个月后另一个项目成功破茧"><strong>六、涅槃重生：两个月后，另一个项目成功破茧</strong><a hidden class="anchor" aria-hidden="true" href="#六涅槃重生两个月后另一个项目成功破茧">#</a></h3>
+<p>项目虽然暂停了，但我们并没有放弃。团队痛定思痛，决定从根本上重构架构和流程：</p>
+<ol>
+<li>
+<p><strong>重建工具治理体系</strong>
+我们投入大量精力，统一了：</p>
+<ul>
+<li><strong>工具的输入输出结构</strong>，确保数据流转清晰无误。</li>
+<li><strong>工具分类与能力标签</strong>，让 Agent 能更智能地选择合适工具。</li>
+<li><strong>工具版本与变更记录</strong>，避免意外的兼容性问题。</li>
+<li><strong>安全边界与权限隔离</strong>，严格控制 Agent 对内部系统的访问。
+现在，Agent 再也不会在无关工具之间胡乱“迷路”了。</li>
+</ul>
+</li>
+<li>
+<p><strong>将 LLM 视为概率系统来对待</strong>
+我们清醒地认识到 AI 的非确定性，并在设计中加入了：</p>
+<ul>
+<li><strong>严格的输入输出校验</strong>，过滤不合规数据。</li>
+<li><strong>行为约束</strong>，为 Agent 划定行动红线。</li>
+<li><strong>规则化兜底机制</strong>，在 AI 决策失败时提供确定性路径。</li>
+<li><strong>回退策略与人工确认点</strong>，确保关键流程万无一失。
+模型不再是“想怎么做就怎么做”，而是被纳入一个可控的框架。</li>
+</ul>
+</li>
+<li>
+<p><strong>分阶段稳健推进</strong>
+我们彻底告别了“一键接全链路”的激进模式，转而采取小步快跑、逐步验证的策略：</p>
+<ul>
+<li><strong>先确保单个任务的闭环稳定运行。</strong></li>
+<li><strong>再在一个部门内部进行灰度验证。</strong></li>
+<li><strong>工具能力逐个扩容，每次都进行充分测试。</strong></li>
+<li><strong>最后才考虑跨部门和全流程的集成。</strong></li>
+</ul>
+</li>
+</ol>
+<p>这套全新的方法论，后来在公司的另一个业务线成功落地。</p>
+<p>数据是最有力的证明：</p>
+<ul>
+<li>工具错误率从 24%直线下降到<strong>3%</strong>。</li>
+<li>通过能力标签优化，工具调用冗余减少了<strong>40%</strong>。</li>
+<li>Agent 的决策稳定性有了<strong>显著提升</strong>。</li>
+<li>在多部门灰度测试中，连续三周<strong>未出现任何重大事故</strong>。</li>
+</ul>
+<p>那一刻，我才真正长舒了一口气。两次项目，底层技术基本相同，<strong>但工程纪律和边界控制的改进，却带来了天壤之别。</strong></p>
+<h3 id="七写在最后失败有时更像一面明镜"><strong>七、写在最后：失败有时更像一面明镜</strong><a hidden class="anchor" aria-hidden="true" href="#七写在最后失败有时更像一面明镜">#</a></h3>
+<p>这次失败的项目，对我个人的职业生涯影响深远。</p>
+<p>它让我深刻意识到：</p>
+<ul>
+<li>Agent 所谓的“聪明”，有时只是一种表象。</li>
+<li>系统的稳定性，根植于扎实的工程实践，而非模型能力的无限拔高。</li>
+<li>对工具缺乏治理，最终必然导致灾难性的后果。</li>
+<li>Demo 永远是最容易迷惑人的东西，它无法替代真实场景的严酷检验。</li>
+<li>AI 并非万能灵药，真正的系统基石始终是工程框架和流程。</li>
+</ul>
+<p>我们常说“大模型技术升级带来了颠覆性变化”，但这次经历告诉我：<strong>真正的成功，往往来源于那些看似“无聊”、琐碎，甚至不那么“AI”的工程细节和严谨管理。</strong></p>
+<p>希望这份带着痛楚的反思，能为你正在进行的 Agent 项目提供一点借鉴。如果你也在探索这条道路，愿你少走一些我曾经踩过的弯路。</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="http://localhost:1313/">Thinking in Agents</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
